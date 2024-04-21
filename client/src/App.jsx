@@ -1,43 +1,32 @@
-import {RouterProvider, createBrowserRouter} from 'react-router-dom'
+import {BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter} from 'react-router-dom'
 import Home from './pages/Home';
 import About from './pages/About';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import Project from './pages/Project';
+import Projects from './pages/Projects';
 import Dashboard from './pages/Dashboard';
-const router =createBrowserRouter([
-  {
-    path : '/',
-    element : <Home/>
-  },
-  {
-    path : '/about',
-    element : <About/>
-  },
-  {
-    path : '/sign-in',
-    element : <SignIn/>
-  },
-  {
-    path : '/sign-up',
-    element : <SignUp/>
-  },
-  {
-    path : '/project',
-    element : <Project/>
-  },
-  {
-    path : '/dashboard',
-    element : <Dashboard/>
-  },
-])
+import Search from './pages/Search';
+import PostPage from './pages/PostPage';
+import Header from './components/Header';
+
 
 
 function App() {
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <BrowserRouter>
+    <Header/>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+      <Route path='/sign-in' element={<SignIn />} />
+      <Route path='/sign-up' element={<SignUp />} />
+      <Route path='/search' element={<Search />} />
+      <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/projects' element={<Projects />} />
+      <Route path='/post/:postSlug' element={<PostPage />} />
+    </Routes>
+
+  </BrowserRouter>
   );
 }
 
